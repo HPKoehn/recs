@@ -105,6 +105,12 @@ struct ArrayEntry<T> {
 pub struct GenerationalIndexArray<T>(Vec<Option<ArrayEntry<T>>>);
 
 impl<T> GenerationalIndexArray<T> {
+    pub fn new() -> GenerationalIndexArray<T> {
+        GenerationalIndexArray {
+            0: Vec::new()
+        }
+    }
+
     pub fn set(&mut self, index: GenerationalIndex, value: T) {
         let inx = index.index();
         // extend vector if too short
