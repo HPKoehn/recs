@@ -124,6 +124,9 @@ impl<T> GenerationalIndexArray<T> {
     }
 
     pub fn get(&self, index: GenerationalIndex) -> Option<&T> {
+        if self.0.len() <= index.index {
+            return None;
+        }
         match &self.0[index.index()] {
             None => None,
             Some(entry) => {
@@ -137,6 +140,9 @@ impl<T> GenerationalIndexArray<T> {
     }
 
     pub fn get_mut(&mut self, index: GenerationalIndex) -> Option<&mut T> {
+        if self.0.len() <= index.index() {
+            return None;
+        }
         match &mut self.0[index.index()] {
             None => None,
             Some(entry) => {
