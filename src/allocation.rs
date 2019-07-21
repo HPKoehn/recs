@@ -95,6 +95,19 @@ impl GenerationalIndexAllocator {
             false
         }
     }
+
+    pub fn live_indices(&self) -> Vec<GenerationalIndex> {
+        let mut live = Vec::new();
+        for (index, entry) in self.entries.iter().enumerate() {
+            if entry.is_live {
+                live.push(GenerationalIndex {
+                    index: index,
+                    generation: entry.generation
+                })
+            }
+        }
+        live
+    }
 }
 
 struct ArrayEntry<T> {
