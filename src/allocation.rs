@@ -167,6 +167,19 @@ impl<T> GenerationalIndexArray<T> {
             }
         }
     }
+
+    pub fn delete(&mut self, index: GenerationalIndex) {
+        if self.0.len() <= index.index() {
+            return;
+        }
+
+        if let Some(entry) = &mut self.0[index.index()] {
+            if entry.generation != index.generation {
+                return;
+            }
+        }
+        self.0[index.index()] = None;
+    }
 }
 
 

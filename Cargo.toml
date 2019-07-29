@@ -1,6 +1,6 @@
 [package]
 name = "recs"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Henrik Paul Köhn <hpkoehn@protonmail.com>"]
 edition = "2018"
 
